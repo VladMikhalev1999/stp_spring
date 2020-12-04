@@ -8,7 +8,7 @@ import java.util.*;
 @Entity
 @Table (name="employee", schema = "stp_spring")
 public class Employee {
-    @ManyToMany ( cascade = { CascadeType.ALL })
+    @ManyToMany ( fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
     @JoinTable(
             name = "employee_status",
             joinColumns = { @JoinColumn(name = "eid", referencedColumnName = "id")},

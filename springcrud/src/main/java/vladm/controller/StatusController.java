@@ -18,27 +18,27 @@ public class StatusController {
     @Autowired
     public StatusController(StatusService es) { this.es = es; }
 
-    @GetMapping("/getStatuses")
+    @GetMapping("/statuses/getStatuses")
     public List<Status> findAll() { return es.findAll(); }
 
-    @GetMapping("/addStatus/{name}")
+    @GetMapping("/statuses/addStatus/{name}")
     @ResponseStatus(HttpStatus.CREATED)
-    public String addStatus(@PathVariable("name") String name) {
+    public void addStatus(@PathVariable("name") String name) {
         Status s = new Status();
         s.setId(es.getMaxId() + 1);
         s.setName(name);
         es.save(s);
     }
 
-    @GetMapping("/deleteStatus/{id}")
+    @GetMapping("/statuses/removeStatus/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deleteStatus(@PathVariable("id") Integer id) {
+    public void deleteStatus(@PathVariable("id") Integer id) {
         es.deleteById(id);
     }
 
-    @GetMapping("/updateStatus/{id}/{name}")
+    @GetMapping("/statuses/setStatus/{id}/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public String updateStatus(@PathVariable("id") Integer id, @PathVariable("name") String name) {
+    public void updateStatus(@PathVariable("id") Integer id, @PathVariable("name") String name) {
         Status s = es.getById(id);
         s.setName(name);
         es.save(s);

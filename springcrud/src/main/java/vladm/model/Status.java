@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Table (name="status", schema = "stp_spring")
 public class Status {
-    @ManyToMany ( cascade = { CascadeType.ALL })
+    @ManyToMany ( fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
     @JoinTable(
             name = "employee_status",
             joinColumns = { @JoinColumn(name = "sid", referencedColumnName = "id")},

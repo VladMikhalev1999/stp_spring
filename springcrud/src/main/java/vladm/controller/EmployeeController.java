@@ -20,46 +20,46 @@ public class EmployeeController {
     @Autowired
     public EmployeeController(EmployeeService es, StatusService ss) { this.es = es; this.ss = ss; }
 
-    @GetMapping("/getEmployees")
+    @GetMapping("/employees/getEmployees")
     public List<Employee> findAll() {
         List<Employee> le = es.findAll();
         return le;
     }
 
-    @GetMapping("/addEmployee/{name}")
+    @GetMapping("/employees/addEmployee/{name}")
     @ResponseStatus(HttpStatus.CREATED)
-    public String addStatus(@PathVariable("name") String name) {
+    public void addStatus(@PathVariable("name") String name) {
         Employee s = new Employee();
         s.setId(es.getMaxId() + 1);
         s.setName(name);
         es.save(s);
     }
 
-    @GetMapping("/deleteEmployee/{id}")
+    @GetMapping("/employees/removeEmployee/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deleteStatus(@PathVariable("id") Integer id) {
+    public void deleteStatus(@PathVariable("id") Integer id) {
         es.deleteById(id);
     }
 
-    @GetMapping("/updateEmployee/{id}/{name}")
+    @GetMapping("/employees/setEmployee/{id}/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public String updateStatus(@PathVariable("id") Integer id, @PathVariable("name") String name) {
+    public void updateStatus(@PathVariable("id") Integer id, @PathVariable("name") String name) {
         Employee e = es.getById(id);
         e.setName(name);
         es.save(e);
     }
 
-    @GetMapping("/addEmployeeStatus/{id}/{name}")
+    @GetMapping("/employees/addEmployeeStatus/{id}/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public String addEmpStat(@PathVariable("id") Integer eid, @PathVariable("name") Integer sid) {
+    public void addEmpStat(@PathVariable("id") Integer eid, @PathVariable("name") Integer sid) {
         Employee e = es.getById(eid);
         Status s = ss.getById(sid);
         es.addEmpStat(e, s);
     }
 
-    @GetMapping("/removeEmployeeStatus/{id}/{name}")
+    @GetMapping("/employees/removeEmployeeStatus/{id}/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public String removeEmpStat(@PathVariable("id") Integer eid, @PathVariable("name") Integer sid) {
+    public void removeEmpStat(@PathVariable("id") Integer eid, @PathVariable("name") Integer sid) {
         Employee e = es.getById(eid);
         Status s = ss.getById(sid);
         es.removeEmpStat(e, s);

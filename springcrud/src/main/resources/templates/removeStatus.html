@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Удалить полномочие</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>
+        <input type="number" id="name" placeholder="ИД Полномочия">
+    </p>
+    <p>
+        <input type="submit" value="Удалить" onclick="removeStatus()"/>
+        <input type="submit" onclick="javascript:history.back(); return false;" value="Отмена">
+    </p>
+</body>
+<script>
+    function removeStatus() {
+       let name = $("#name").val();
+       document.location.href = "/statuses/removeStatus/" + name;
+    }
+</script>
+</html>

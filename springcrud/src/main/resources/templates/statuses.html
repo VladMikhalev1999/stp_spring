@@ -17,7 +17,7 @@
         });
         function getDataFromAPI() {
             $.ajax({
-                url: "/getStatuses",
+                url: "/statuses/getStatuses",
                 type: "GET",
                 success: function (data) {
                     let table = document.getElementById("main_table");
@@ -49,8 +49,10 @@
     </script>
 </head>
 <body>
-
-
+<p><a href="/">Домой</a></p>
+<p><a href="/statuses/addStatus">Добавить полномочие</a></p>
+<p><a href="/statuses/setStatus">Обновить полномочие</a></p>
+<p><a href="/statuses/removeStatus">Удалить полномочие</a></p>
 <table id="main_table"><tbody></tbody></table>
 </body>
 </html>
