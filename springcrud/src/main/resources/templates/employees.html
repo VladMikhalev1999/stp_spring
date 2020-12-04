@@ -17,7 +17,7 @@
         });
         function getDataFromAPI() {
             $.ajax({
-                url: "/getEmployees",
+                url: "/employees/getEmployees",
                 type: "GET",
                 success: function (data) {
                     let table = document.getElementById("main_table");
@@ -43,7 +43,23 @@
                         let id = el['id']
                         let name = el['name']
                         console.log(statuses)
-                        for (let j = 0; j < statuses.length; j++) {
+                        if (statuses.length == 0) {
+                            let tr = document.createElement("tr")
+                            let td = document.createElement("td")
+                            td.innerText = id;
+                            tr.appendChild(td)
+                            td = document.createElement("td")
+                            td.innerText = name;
+                            tr.appendChild(td)
+                            td = document.createElement("td")
+                            td.innerText = '---';
+                            tr.appendChild(td)
+                            td = document.createElement("td")
+                            td.innerText = '---';
+                            tr.appendChild(td)
+                            body.appendChild(tr)
+                        }
+                        else for (let j = 0; j < statuses.length; j++) {
                             let tr = document.createElement("tr")
                             let td = document.createElement("td")
                             td.innerText = id;
@@ -67,8 +83,12 @@
     </script>
 </head>
 <body>
-
-
+<p><a href="/">Домой</a></p>
+<p><a href="/employees/addEmployee">Добавить сотрудника</a></p>
+<p><a href="/employees/setEmployee">Обновить имя сотрудника</a></p>
+<p><a href="/employees/removeEmployee">Удалить сотрудника</a></p>
+<p><a href="/employees/addEmployeeStatus">Добавить полномочие сотруднику</a></p>
+<p><a href="/employees/removeEmployeeStatus">Убрать полномочие у сотрудника</a></p>
 <table id="main_table"><tbody></tbody></table>
 </body>
 </html>
