@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Добавить полномочие</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <p>
+        <label for="name">Название</label>
+        <input type="text" id="name" placeholder="Название">
+    </p>
+    <p>
+        <input type="submit" value="Добавить" onclick="addNewStatus()"/>
+        <input type="submit" onclick="javascript:history.back(); return false;" value="Отмена">
+    </p>
+</body>
+<script>
+    function addNewStatus() {
+       let name = $("#name").val();
+       document.location.href = "/addStatus/" + name;
+    }
+</script>
+</html>
