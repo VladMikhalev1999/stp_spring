@@ -39,7 +39,6 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.OK)
     public String deleteStatus(@PathVariable("id") Integer id) {
         es.deleteById(id);
-        return "Success.<br><a href='/employees'>Вернуться</a>";
     }
 
     @GetMapping("/updateEmployee/{id}/{name}")
@@ -48,7 +47,6 @@ public class EmployeeController {
         Employee e = es.getById(id);
         e.setName(name);
         es.save(e);
-        return "Success.<br><a href='/employees'>Вернуться</a>";
     }
 
     @GetMapping("/addEmployeeStatus/{id}/{name}")
@@ -56,11 +54,7 @@ public class EmployeeController {
     public String addEmpStat(@PathVariable("id") Integer eid, @PathVariable("name") Integer sid) {
         Employee e = es.getById(eid);
         Status s = ss.getById(sid);
-        if (e == null || s == null) {
-            return "Fail.<br><a href='/employees'>Вернуться</a>";
-        }
         es.addEmpStat(e, s);
-        return "Success.<br><a href='/employees'>Вернуться</a>";
     }
 
     @GetMapping("/removeEmployeeStatus/{id}/{name}")
@@ -68,10 +62,6 @@ public class EmployeeController {
     public String removeEmpStat(@PathVariable("id") Integer eid, @PathVariable("name") Integer sid) {
         Employee e = es.getById(eid);
         Status s = ss.getById(sid);
-        if (e == null || s == null) {
-            return "Fail.<br><a href='/employees'>Вернуться</a>";
-        }
         es.removeEmpStat(e, s);
-        return "Success.<br><a href='/employees'>Вернуться</a>";
     }
 }
