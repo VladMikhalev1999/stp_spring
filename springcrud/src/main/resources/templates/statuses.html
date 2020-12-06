@@ -3,14 +3,19 @@
 <style>
     table {
         border-collapse: collapse;
-        border: 1px solid grey;
     }
-    th, td {border: 1px solid grey; padding: 5px; }
+    th, td {
+        border: 1px solid black;
+        padding: 5px;
+    }
 </style>
 <head>
     <meta charset="UTF-8"/>
-    <title>Список работников</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Список полномочий</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="responsive-tables.css">
+    <script src="jquery.min.js"></script>
+    <script src="responsive-tables.js"></script>
     <script>
         $(document).ready(function() {
             getDataFromAPI();
@@ -53,6 +58,6 @@
 <p><a href="/statuses/addStatus">Добавить полномочие</a></p>
 <p><a href="/statuses/setStatus">Обновить полномочие</a></p>
 <p><a href="/statuses/removeStatus">Удалить полномочие</a></p>
-<table id="main_table"><tbody></tbody></table>
+<table id="main_table" class="responsive"><tbody></tbody></table>
 </body>
 </html>
